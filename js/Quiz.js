@@ -1,7 +1,7 @@
-import Question from './Question.js'
+// import Question from './Question.js'
 
 export default function Quiz (questions) {
-  this.question = question;
+  this.questions = questions;
   this.score = 0;
   this.currentIndex = 0;
 }
@@ -13,12 +13,16 @@ Quiz.prototype.nextIndex = function() {
   this.currentIndex += 1;
 }
 Quiz.prototype.hasEnded = function() {
-  return this.currentIndex === this.question.length;
+  return this.currentIndex === this.questions.length;
 }
 Quiz.prototype.guess = function(userGuess) {
   const currentQuestion = this.questions[this.currentIndex];
   if (currentQuestion.isCorrect(userGuess)) {
     this.score += 1;
-  }
-  this.nextIndex;
+  };
+  this.nextIndex();
+}
+Quiz.prototype.reset = function() {
+  this.score = 0;
+  this.currentIndex = 0;
 }
